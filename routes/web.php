@@ -36,4 +36,8 @@ Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth'])->name('dashboard');
 
+Route::get('/game', function () {
+    return Inertia::render('Game/Main');
+})->name('game');
+
 require __DIR__.'/auth.php';
