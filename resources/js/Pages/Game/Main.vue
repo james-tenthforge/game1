@@ -16,12 +16,19 @@ for(let rowIndex = 0; rowIndex < yLength; rowIndex++) {
     grid.push(row);
 }
 
-const units = [
-    {coords:{x:0, y:0}},
-    {coords:{x:1, y:1}},
-    {coords:{x:2, y:2}}
-];
+const players = [
+    {id:1, name:'Player 1', colour:'blue'},
+    {id:2, name:'Player 2', colour:'red'}
+]
 
+const units = [
+    {coords:{x:11, y:0}, player:players[0]},
+    {coords:{x:12, y:0}, player:players[0]},
+    {coords:{x:13, y:0}, player:players[0]},
+    {coords:{x:11, y:24}, player:players[1]},
+    {coords:{x:12, y:24}, player:players[1]},
+    {coords:{x:13, y:24}, player:players[1]}
+];
 
 </script>
 
@@ -51,9 +58,18 @@ const units = [
             </div>
             <div class="game-board-unit-layer pointer-events-none bg-transparent border-gray-400 h-full w-full top-0 left-0 z-10 absolute">
                 <div
-                    class="unit absolute bg-purple-800 hover:bg-purple-500 pointer-events-auto"
+                    class="unit absolute bg-purple-800 pointer-events-auto"
                     v-for="(unit, unitIndex) in units"
                     :key="unitIndex"
+                    :class="{
+                        'unit': true,
+                        'absolute': true,
+                        'bg-blue-800': unit.player.colour === 'blue',
+                        'bg-red-800': unit.player.colour === 'red',
+                        'hover:bg-blue-500': unit.player.colour === 'blue',
+                        'hover:bg-red-500': unit.player.colour === 'red',
+                        'pointer-events-auto': true
+                    }"
                     :style="{
                         top:(unit.coords.y * gridSquareSize)+'px',
                         left:(unit.coords.x * gridSquareSize)+'px',
