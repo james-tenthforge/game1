@@ -9,7 +9,6 @@
 
 .game-board-row {
     @apply
-        h-8
         leading-none
 }
 
@@ -18,8 +17,6 @@
         hover:bg-green-700
         leading-none
         rounded-sm
-        h-8
-        w-8
         inline-block
         bg-green-600
 }
